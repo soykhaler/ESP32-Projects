@@ -3,7 +3,7 @@
 
 // Configuración de la red Wi-Fi existente
 const char* ssid = "SSID";     // Nombre de la red Wi-Fi
-const char* password = "Asbhe6C33U";     // Contraseña de la red Wi-Fi
+const char* password = "password";     // Contraseña de la red Wi-Fi
 
 // Configuración del servidor
 WebServer server(80);                    // Crea el servidor en el puerto 80
