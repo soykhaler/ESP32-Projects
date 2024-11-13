@@ -1,0 +1,7 @@
+Enable USB on ESP32
+
+
+sudo chmod a+rw /dev/ttyUSB0
+
+
+
