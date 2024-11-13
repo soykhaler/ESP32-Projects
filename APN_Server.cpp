@@ -2,7 +2,7 @@
 #include <WebServer.h>
 
 // Configuración de la red Wi-Fi que creará el ESP32
-const char* ssid = "Hola Aaron";     // Nombre de la red Wi-Fi
+const char* ssid = "ESP32";     // Nombre de la red Wi-Fi
 const char* password = "";     // Contraseña de la red Wi-Fi
 
 // Configuración del servidor
