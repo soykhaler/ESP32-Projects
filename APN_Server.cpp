@@ -1,16 +1,15 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-// Configuración de la red Wi-Fi que creará el ESP32
-const char* ssid = "ESP32";     // Nombre de la red Wi-Fi
-const char* password = "";     // Contraseña de la red Wi-Fi
 
-// Configuración del servidor
-WebServer server(80);                    // Crea el servidor en el puerto 80
+const char* ssid = "ESP32";     
+const char* password = "";     
 
-const int ledPin = 2; // Cambia esto al pin donde tienes conectado el LED
 
-// Función para manejar la ruta raíz ("/")
+WebServer server(80);                   
+
+const int ledPin = 2; 
+
 void handleRoot() {
   String html = "<html><head><title>SoyKhaler Server</title></head><body>";
   html += "<h1>SoyKhaler Server Utility</h1>";
@@ -19,27 +18,27 @@ void handleRoot() {
   html += "<a href=\"/led/off\"><button>Apagar LED</button></a>";
   html += "</body></html>";
 
-  server.send(200, "text/html", html);   // Enviar la página al cliente
+  server.send(200, "text/html", html);   
 }
 
 void setup() {
   Serial.begin(115200);
   Serial.println("Iniciando Sistema");
 
-  // Crear un punto de acceso Wi-Fi
+
   WiFi.softAP(ssid, password);
   Serial.print("Punto de acceso creado. Dirección IP: ");
-  Serial.println(WiFi.softAPIP()); // Muestra la dirección IP del AP
+  Serial.println(WiFi.softAPIP()); 
 
-  pinMode(ledPin, OUTPUT); // Configura el pin del LED como salida
+  pinMode(ledPin, OUTPUT); 
 
-  server.on("/", handleRoot); // Maneja la ruta raíz
+  server.on("/", handleRoot); 
   server.on("/led/on", []() {
-    digitalWrite(ledPin, HIGH); // Enciende el LED
+    digitalWrite(ledPin, HIGH); 
     server.send(200, "text/html", "LED encendido. <a href=\"/\">Volver</a>");
   });
   server.on("/led/off", []() {
-    digitalWrite(ledPin, LOW); // Apaga el LED
+    digitalWrite(ledPin, LOW); 
     server.send(200, "text/html", "LED apagado. <a href=\"/\">Volver</a>");
   });
 
@@ -48,5 +47,5 @@ void setup() {
 }
 
 void loop() {
-  server.handleClient(); // Maneja las solicitudes del cliente
+  server.handleClient(); 
 }
